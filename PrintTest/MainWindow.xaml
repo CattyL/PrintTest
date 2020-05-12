@@ -40,7 +40,7 @@
                                 <Button Grid.Column="1" Height="14" Width="14" 
                                         Tag="{TemplateBinding Header}"
                                         Name="closeButton" FontSize="9"
-                                        Click="CloseButton_Click" 
+                                        Click="CloseButton_Click"
                                         MouseEnter="CloseButton_MouseEnter" 
                                         MouseLeave="CloseButton_MouseLeave">
                                     <Button.Template>
@@ -49,7 +49,7 @@
                                                 <Border>
                                                     <StackPanel>
                                                         <StackPanel.Background>
-                                                            <ImageBrush ImageSource=""
+                                                            <ImageBrush ImageSource="./Resources/Close.jpg"
                                                                         Stretch="Fill"></ImageBrush>
                                                         </StackPanel.Background>
                                                     </StackPanel>
@@ -65,21 +65,37 @@
             </Setter>
         </Style>
     </Window.Resources>
+    
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="AUTO"/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-        <TreeView>
-            <TreeViewItem Header="Folder"></TreeViewItem>
-        </TreeView>
-
-        <GridSplitter Grid.Column="1" Width="3" VerticalAlignment="Stretch" Background="Gray"></GridSplitter>
+        <!-- Menu -->
+        <Menu Grid.Row="0"></Menu>
         
-        <TabControl Grid.Column="2" x:Name="tc">
-            
-        </TabControl>
+        <!-- Main -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="AUTO"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <TreeView Grid.Column="0" x:Name="treeView">
+                <TreeViewItem Header="Folder"></TreeViewItem>
+            </TreeView>
+
+            <GridSplitter Grid.Column="1" Width="3" VerticalAlignment="Stretch" Background="Gray"></GridSplitter>
+
+            <TabControl Grid.Column="2" x:Name="tc">
+
+            </TabControl>
+        </Grid>
+        
+        <!-- StatusBar -->
+        <StatusBar Grid.Row="2"></StatusBar>
     </Grid>
 </Window>
