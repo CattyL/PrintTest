@@ -6,8 +6,12 @@
         xmlns:nux="clr-namespace:Captain.NetCore.UI;assembly=Captain.NetCore"
         xmlns:local="clr-namespace:PrintTest"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    
+        Title="MainWindow" Height="450" Width="600">
+    <Window.Resources>
+        <Style x:Key="ListViewItemStyle" TargetType="{x:Type ListViewItem}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        </Style>
+    </Window.Resources>
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -15,6 +19,26 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button Margin="0,0,0,400" Click="Button_Click">打印</Button>
+        <Button Margin="0,0,0,390" Grid.Column="0" Click="Button_Click">打印</Button>
+
+        <nux:GridView Grid.Column="1" x:Name="grid">
+            <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                <ListView x:Name="listView" ItemsSource="{Binding}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
+                    <ListView.View>
+
+                        <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Employee Information">
+                            <GridViewColumn Header="序号" Width="60" DisplayMemberBinding="{Binding index}" />
+                            <GridViewColumn Header="序列号" Width="120" DisplayMemberBinding="{Binding serialNumber}" />
+                            <GridViewColumn Header="书名" Width="100" DisplayMemberBinding="{Binding bookName}" />
+                            <GridViewColumn Header="类型" Width="80" DisplayMemberBinding="{Binding bookType}" />
+                            <GridViewColumn Header="作者" Width="100" DisplayMemberBinding="{Binding author}" />
+                            <GridViewColumn Header="出版社" Width="100" DisplayMemberBinding="{Binding publishingCompany}" />
+                            <GridViewColumn Header="价格" Width="60" DisplayMemberBinding="{Binding price}" />
+                            <GridViewColumn Header="库存" Width="60" DisplayMemberBinding="{Binding stock}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </ScrollViewer>
+        </nux:GridView>
     </Grid>
 </Window>
