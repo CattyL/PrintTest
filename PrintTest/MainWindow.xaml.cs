@@ -25,19 +25,7 @@ namespace PrintTest
             InitializeComponent();
         }
 
-        
-
-        private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
