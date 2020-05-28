@@ -17,11 +17,21 @@ using Captain.NetCore.Database;
 
 namespace PrintTest
 {
+    //参考
+    //https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.printdialog.printvisual?redirectedfrom=MSDN&view=netcore-3.1#System_Windows_Controls_PrintDialog_PrintVisual_System_Windows_Media_Visual_System_String_
+    //https://social.msdn.microsoft.com/Forums/officeapps/zh-CN/82881771-20d2-4b5d-bd9c-81ba0f0cab9b/35831383821996819979wpf2345429616251712136024212358132459020040?forum=wpfzhchs
+    //https://www.cnblogs.com/s0611163/p/10147705.html
+
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// 需要打印预览的控件
+        /// </summary>
+        private FrameworkElement _element;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -52,7 +62,7 @@ namespace PrintTest
             PrintDialog pd = new PrintDialog();
             if (pd.ShowDialog() == true)
             {
-                pd.PrintVisual(this.grid, "");
+                pd.PrintVisual(this.border, "");
             }
         }
 
